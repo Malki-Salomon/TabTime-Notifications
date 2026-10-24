@@ -1,0 +1,168 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  // שמרנו על הגדרת הפונטים - אם הם לא נטענים מגוגל, הדפדפן ישתמש אוטומטית ב-Rubik או Heebo המצוינים שמותקנים במחשב
+  font-family: "Inter", "Assistant", "Rubik", "Heebo", "Segoe UI", Tahoma, sans-serif;
+  color: $color-text;
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $grad-bg;
+  background-attachment: fixed;
+}
+
+a { color: $color-secondary; text-decoration: none; transition: color .2s ease; }
+a:hover { color: $color-primary-dark; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(15,23,42,.15); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(15,23,42,.25); }
+
+.app-container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: $space-xl $space-lg;
+}
+
+// ===== Auth pages =====
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $space-xl $space-md;
+  background:
+    radial-gradient(800px 500px at 100% 0%, rgba(16,185,129,0.14), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(8,145,178,0.12), transparent 60%),
+    linear-gradient(180deg, #f0fdf4 0%, #f8fafc 50%, #ecfeff 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  padding: $space-2xl $space-xl;
+  background: #fff;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-elevated;
+  border: 1px solid $color-border;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: $grad-primary;
+  }
+}
+
+// ===== Dashboard grids =====
+.medication-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $space-lg;
+}
+
+.section-title {
+  margin: $space-2xl 0 $space-md;
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-text;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 22px;
+    border-radius: 4px;
+    background: $grad-primary;
+  }
+}
+
+// ===== Premium upload dropzone =====
+.upload-dropzone {
+  border: 2px dashed rgba(16, 185, 129, 0.35);
+  border-radius: $radius-lg;
+  padding: $space-2xl $space-lg;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(16,185,129,0.04), rgba(8,145,178,0.03));
+  cursor: pointer;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover,
+  &.drag-over {
+    border-color: $color-primary;
+    background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(8,145,178,0.05));
+    box-shadow: $shadow-glow;
+    transform: translateY(-2px);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: $color-muted;
+  padding: $space-2xl;
+  background: #fff;
+  border-radius: $radius-lg;
+  border: 1px dashed $color-border;
+}
+
+// ===== Premium MedRemind logo =====
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  user-select: none;
+
+  .brand-mark {
+    width: 36px; height: 36px;
+    border-radius: 12px;
+    background: $grad-primary;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-glow;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -3px; right: -3px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid $color-primary;
+    }
+  }
+
+  .brand-med { color: #0f172a; }
+  .brand-remind {
+    background: linear-gradient(135deg, #10b981, #0891b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+// ===== Utility animations =====
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-slow { animation: float-slow 6s ease-in-out infinite; }

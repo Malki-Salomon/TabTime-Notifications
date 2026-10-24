@@ -1,0 +1,65 @@
+# ===== General =====
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+*.7z
+*.zip
+
+# ===== IDEs =====
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated/
+.sts4/
+*.code-workspace
+
+# ===== Secrets / local environment =====
+.env
+.env.*
+!.env.example
+
+# ===== Server (Notifications-java: Spring Boot / Maven) =====
+target/
+server/Notifications-java/lib_backup/
+server/Notifications-java/tesseract-bin/
+server/Notifications-java/data/
+server/Notifications-java/test.png
+HELP.md
+*.class
+*.war
+hs_err_pid*
+# H2 local file database
+*.mv.db
+*.trace.db
+*.lock.db
+
+# ===== Client (React / Vite) =====
+node_modules/
+dist/
+dist-ssr/
+build/
+coverage/
+.vite/
+.lovable/
+bun.lock
+*.local
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ===== OCR service (Python) =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/

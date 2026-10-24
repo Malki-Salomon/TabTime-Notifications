@@ -1,0 +1,35 @@
+@use "./variables" as *;
+
+// Flexbox utility
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// Responsive auto-fill grid for dashboard cards
+@mixin responsive-grid($min: 280px, $gap: $space-lg) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+  gap: $gap;
+}
+
+@mixin card {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  padding: $space-lg;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  &:hover {
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+@mixin centered-page {
+  min-height: 100vh;
+  @include flex(column, center, center, $space-lg);
+  background: linear-gradient(135deg, $color-primary-light 0%, $color-bg 60%);
+  padding: $space-lg;
+}
